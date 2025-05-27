@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "les01/README.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
@@ -169,5 +169,7 @@
     }
   },
   "active": "cb63bc3b3e909501",
-  "lastOpenFiles": []
+  "lastOpenFiles": [
+    "les01/README.md"
+  ]
 }
