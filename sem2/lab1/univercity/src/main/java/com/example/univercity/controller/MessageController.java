@@ -1,4 +1,4 @@
-package com.example.univercity;
+package com.example.univercity.controller;
 
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;

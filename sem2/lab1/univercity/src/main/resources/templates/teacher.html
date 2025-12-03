@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Dashboard</title>
+</head>
+<body>
+    <h1>Welcome Teacher!</h1>
+    <p>This is the teacher dashboard.</p>
+    <p>Username: <span th:text="${#authentication.name}"></span></p>
+    
+    <h2>Actions:</h2>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/messages">View Messages (API)</a></li>
+    </ul>
+    
+    <form action="/logout" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
