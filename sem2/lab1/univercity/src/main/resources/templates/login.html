@@ -1,21 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Вход в систему</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            width: 350px;
+        }
+        .alert {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Login Form</h1>
-    <form method="post" action="/login">
-        <div>
-            <label>Username:</label>
-            <input type="text" name="username">
+    <div class="login-box">
+        <h1>🔐 Вход в систему</h1>
+        
+        <!-- Сообщения об ошибках/успехе -->
+        <div th:if="${param.error}" class="alert alert-error">
+            ❌ Неверный логин или пароль
         </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" name="password">
+        <div th:if="${param.logout}" class="alert alert-success">
+            ✅ Вы успешно вышли из системы
         </div>
-        <button type="submit">Login</button>
-    </form>
+        
+        <!-- Форма логина -->
+        <form th:action="@{/login}" method="post">
+            <div>
+                <input type="text" name="username" placeholder="Логин" required>
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="Пароль" required>
+            </div>
+            <div>
+                <button type="submit">Войти</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

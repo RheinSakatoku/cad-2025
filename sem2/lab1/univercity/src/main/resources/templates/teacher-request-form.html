@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Запрос на перенос пары</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .schedule-info {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Запрос на перенос пары</h1>
+        
+        <div class="schedule-info">
+            <h3>Текущая пара:</h3>
+            <p><strong>Предмет:</strong> <span th:text="${schedule.subject}">Математика</span></p>
+            <p><strong>Группа:</strong> <span th:text="${schedule.groupName}">ИТ-101</span></p>
+            <p><strong>Преподаватель:</strong> <span th:text="${teacherName}">Петров П.П.</span></p>
+            <p><strong>Текущая дата:</strong> <span th:text="${#temporals.format(schedule.date, 'dd.MM.yyyy')}">27.12.2025</span></p>
+            <p><strong>Текущее время:</strong> <span th:text="${schedule.startTime} + ' - ' + ${schedule.endTime}">09:00 - 10:30</span></p>
+            <p><strong>Аудитория:</strong> <span th:text="${schedule.room}">Аудитория 101</span></p>
+        </div>
+        
+        <form th:action="@{/teacher/request}" method="post">
+            <input type="hidden" name="scheduleId" th:value="${schedule.id}">
+            
+            <div class="form-group">
+                <label for="newDate">Новая дата:</label>
+                <input type="date" id="newDate" name="newDate" required
+                       th:value="${#temporals.format(schedule.date, 'yyyy-MM-dd')}">
+            </div>
+            
+            <div class="form-group">
+                <label for="newStartTime">Новое время начала:</label>
+                <input type="time" id="newStartTime" name="newStartTime" 
+                       th:value="${schedule.startTime}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="newEndTime">Новое время окончания:</label>
+                <input type="time" id="newEndTime" name="newEndTime" 
+                       th:value="${schedule.endTime}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="reason">Причина переноса:</label>
+                <textarea id="reason" name="reason" placeholder="Укажите причину переноса пары..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit">Отправить запрос</button>
+                <a th:href="@{/teacher/home}" style="display: block; text-align: center; margin-top: 10px;">Вернуться назад</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
