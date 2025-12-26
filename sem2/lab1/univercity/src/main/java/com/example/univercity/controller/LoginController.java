@@ -11,7 +11,7 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginPage() {
         System.out.println("DEBUG: Rendering login page");
-        return "login"; // возвращает templates/login.html
+        return "login";
     }
 
     @GetMapping("/default")

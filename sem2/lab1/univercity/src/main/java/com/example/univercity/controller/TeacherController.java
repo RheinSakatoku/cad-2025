@@ -108,10 +108,10 @@ public class TeacherController {
         LocalDateTime requestedDateTime = LocalDateTime.of(parsedNewDate, parsedNewStartTime);
         request.setRequestedDateTime(requestedDateTime);
         
-        // НОВЫЕ ПОЛЯ - ВАЖНО! Без них approve не будет работать
-        request.setNewDate(parsedNewDate);                    // <-- ЭТО НОВОЕ
-        request.setNewStartTime(parsedNewStartTime);          // <-- ЭТО НОВОЕ
-        request.setNewEndTime(parsedNewEndTime);              // <-- ЭТО НОВОЕ
+        //Без них approve не будет работать
+        request.setNewDate(parsedNewDate);                    
+        request.setNewStartTime(parsedNewStartTime);         
+        request.setNewEndTime(parsedNewEndTime);              
         
         request.setReason(reason);
         request.setStatus("PENDING");

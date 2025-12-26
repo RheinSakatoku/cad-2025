@@ -27,8 +27,6 @@ public class User {
     
     private String subjects;
 
-    // Геттеры и сеттеры
-
     public Long getId() {
         return id;
     }
@@ -49,7 +47,6 @@ public class User {
         return password;
     }
 
-    // обычно пароль хранится уже захешированным
     public void setPassword(String password) {
         this.password = password;
     }

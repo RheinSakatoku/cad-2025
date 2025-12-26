@@ -42,19 +42,18 @@ public class ChangeRequest {
     @Column(name = "requested_at", nullable = false)
     private LocalDateTime requestedAt;
     
-   @Column(name = "moderator_comment", nullable = true) // <-- тоже может быть null
+   @Column(name = "moderator_comment", nullable = true) 
     private String moderatorComment;
 
-    @Column(name = "new_date", nullable = true) // <-- новое поле, может быть null
+    @Column(name = "new_date", nullable = true)
     private LocalDate newDate;
     
-    @Column(name = "new_start_time", nullable = true) // <-- новое поле, может быть null
+    @Column(name = "new_start_time", nullable = true) 
     private LocalTime newStartTime;
     
-    @Column(name = "new_end_time", nullable = true) // <-- новое поле, может быть null
+    @Column(name = "new_end_time", nullable = true) 
     private LocalTime newEndTime;
     
-    // Геттеры и сеттеры для новых полей
     public LocalDate getNewDate() { return newDate; }
     public void setNewDate(LocalDate newDate) { this.newDate = newDate; }
     
@@ -63,8 +62,7 @@ public class ChangeRequest {
     
     public LocalTime getNewEndTime() { return newEndTime; }
     public void setNewEndTime(LocalTime newEndTime) { this.newEndTime = newEndTime; }
-    
-    // Конструкторы
+
     public ChangeRequest() {
         this.status = "PENDING";
         this.requestedAt = LocalDateTime.now();
@@ -82,8 +80,6 @@ public class ChangeRequest {
         this.requestedDateTime = requestedDateTime;
         this.reason = reason;
     }
-    
-    // Геттеры и сеттеры для ВСЕХ полей
     
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }

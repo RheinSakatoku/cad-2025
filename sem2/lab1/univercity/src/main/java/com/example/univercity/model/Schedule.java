@@ -31,8 +31,6 @@ public class Schedule {
     
     private String room;
 
-    // Геттеры и сеттеры
-
     public Long getId() {
         return id;
     }
