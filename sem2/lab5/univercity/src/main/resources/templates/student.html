@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Студент</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #4CAF50; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Расписание группы <span th:text="${username}"></span></h1>
+    
+    <table>
+        <tr>
+            <th>Дата</th>
+            <th>Время</th>
+            <th>Предмет</th>
+            <th>Преподаватель</th>
+            <th>Аудитория</th>
+        </tr>
+        <tr th:each="schedule : ${schedules}">
+            <td th:text="${#temporals.format(schedule.date, 'dd.MM.yyyy')}"></td>
+            <td th:text="${schedule.startTime} + ' - ' + ${schedule.endTime}"></td>
+            <td th:text="${schedule.subject}"></td>
+            <td th:text="${schedule.teacherName}"></td>
+            <td th:text="${schedule.room}"></td>
+        </tr>
+    </table>
+    
+    <form action="/logout" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <button type="submit">Выйти</button>
+    </form>
+</body>
+</html>
